@@ -2,7 +2,7 @@
 
 namespace CodeSnipsAPI.Services
 {
-    public class ISnippetInfoRepository
+    public interface ISnippetInfoRepository
     {
         Task<IEnumerable<Snippet>> GetSnippetsAsync();
         Task<Snippet?> GetSnippetAsync(int snippetId);
