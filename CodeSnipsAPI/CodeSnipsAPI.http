@@ -1,6 +1,0 @@
-@CodeSnipsAPI_HostAddress = http://localhost:5092
-
-GET {{CodeSnipsAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
