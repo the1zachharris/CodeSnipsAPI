@@ -1,4 +1,6 @@
+using CodeSnipsAPI.DbContexts;
 using Microsoft.AspNetCore.StaticFiles;
+using CodeSnipsAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +12,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 
-builder.Services.AddDbContext<ListInfoContext>();
+builder.Services.AddDbContext<UserInfoContext>();
 
-builder.Services.AddScoped<IListInfoRepository, ListInfoRepository>();
+//builder.Services.AddScoped<IListInfoRepository, ListInfoRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -33,8 +35,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    _ = endpoints.MapControllers();
+});
 
 app.Run();

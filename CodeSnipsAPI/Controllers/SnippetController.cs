@@ -1,6 +1,12 @@
-﻿namespace CodeSnipsAPI.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace CodeSnipsAPI.Controllers
 {
-    public class SnippetController
+    [ApiController]
+    [Route("api/snippet")]
+
+    public class SnippetController : ControllerBase
     {
+        
     }
 }
