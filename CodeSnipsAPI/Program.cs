@@ -14,7 +14,7 @@ builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 
 builder.Services.AddDbContext<UserInfoContext>();
 
-//builder.Services.AddScoped<IListInfoRepository, ListInfoRepository>();
+builder.Services.AddScoped<ISnippetInfoRepository, SnippetInfoRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -32,6 +32,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("ArticleGenerator");
 
 app.UseHttpsRedirection();
 

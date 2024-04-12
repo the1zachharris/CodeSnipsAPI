@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CodeSnipsAPI.Controllers
 {
-    [ApiController]
     [Route("api/snippet")]
+    [ApiController]
 
     public class SnippetController : ControllerBase
     {
@@ -20,10 +20,10 @@ namespace CodeSnipsAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<SnippetDto>> GetSnippets()
+        public async Task<ActionResult<IEnumerable<SnippetDto>>> GetSnippets()
         {
-            var snips = await _snippetInfoRepository.GetSnippetsAsync();
-            return Ok(_mapper.Map<IEnumerable<SnippetDto>>(snips));
+            var snipsEntities = await _snippetInfoRepository.GetSnippetsAsync();
+            return Ok(_mapper.Map<IEnumerable<SnippetDto>>(snipsEntities));
         }
     }
 }
