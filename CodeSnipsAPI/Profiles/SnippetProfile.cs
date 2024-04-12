@@ -1,7 +1,13 @@
-﻿namespace CodeSnipsAPI.Profiles
-{
-    public class SnippetProfile
-    {
+﻿using AutoMapper;
 
+namespace CodeSnipsAPI.Profiles
+{
+    public class SnippetProfile : Profile
+    {
+        public SnippetProfile() 
+        {
+            CreateMap<Entites.Snippet, Models.SnippetDto>();
+            
+        }
     }
 }
