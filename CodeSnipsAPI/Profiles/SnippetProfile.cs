@@ -7,6 +7,7 @@ namespace CodeSnipsAPI.Profiles
         public SnippetProfile() 
         {
             CreateMap<Entites.Snippet, Models.SnippetDto>();
+            CreateMap<Models.SnippetForCreationDto, Entites.Snippet>();
             
         }
     }
