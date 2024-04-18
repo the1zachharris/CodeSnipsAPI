@@ -3,18 +3,12 @@ using System.Text;
 
 namespace CodeSnipsAPI.Utilities
 {
-    public class EncryptUtility
+    public class EncryptUtility(IConfiguration configuration)
     {
-        public readonly byte[] Key;
-        public readonly byte[] IV;
+        public readonly byte[] Key = Encoding.UTF8.GetBytes(configuration["AES_KEY"] ?? "e0ecc8d25dd8ff8348339ceef19a9f81");
+        public readonly byte[] IV = Encoding.UTF8.GetBytes(configuration["AES_IV"] ?? "32f3b2c782fb891a");
 
-        public EncryptUtility(IConfiguration configuration)
-        {
-            Key = Encoding.UTF8.GetBytes(configuration["AES_KEY"] ?? "e0ecc8d25dd8ff8348339ceef19a9f81");
-            IV = Encoding.UTF8.GetBytes(configuration["AES_IV"] ?? "32f3b2c782fb891a");
-        }
-
-        public String Encrypt(string plain)
+        public string Encrypt(string plain)
         {
             byte[] encrypted;
 

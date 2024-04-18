@@ -26,6 +26,12 @@ namespace CodeSnipsAPI.Controllers
         public async Task<ActionResult<IEnumerable<SnippetDto>>> GetSnippets()
         {
             var snipsEntities = await _snippetInfoRepository.GetSnippetsAsync();
+
+            foreach (var snip in snipsEntities)
+            {
+                snip.Code = _encryptUtility.Decrypt(snip.Code);
+            }
+
             return Ok(_mapper.Map<IEnumerable<SnippetDto>>(snipsEntities));
         }
 
@@ -37,6 +43,7 @@ namespace CodeSnipsAPI.Controllers
             {
                 return NotFound();
             }
+            snip.Code = _encryptUtility.Decrypt(snip.Code);
             return Ok(_mapper.Map<SnippetDto>(snip));
         }
 
