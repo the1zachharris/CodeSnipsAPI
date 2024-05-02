@@ -4,19 +4,19 @@ namespace CodeSnipsAPI
 {
     public class UserData
     {
-        public List<UserDto> User { get; set; }
+        public List<User> User { get; set; }
         public static UserData Current { get; } = new UserData();
         public UserData() 
         {
-            User = new List<UserDto>()
+            User = new List<User>()
             {
-                new UserDto()
+                new User()
                 {
                     Id = 1,
                     Email = "test1@email.com",
                     Password = "password",
                 },
-                new UserDto()
+                new User()
                 {
                     Id = 1,
                     Email = "test2@email.com",
